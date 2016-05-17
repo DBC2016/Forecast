@@ -15,34 +15,49 @@ class ViewController: UIViewController {
     var dataManager = DataManager.sharedInstance
     var networkManager = NetworkManager.sharedInstance
     
-    @IBOutlet private weak var forecastSearchBar :UISearchBar!
+    @IBOutlet private weak var forecastSearchBar    :UISearchBar!
+    @IBOutlet private weak var forecastTempLabel    :UILabel!
+    @IBOutlet private weak var forecastCityLabel    :UILabel!
+    @IBOutlet private weak var forecastDateLabel    :UILabel!
+    @IBOutlet private weak var forecastSumTextView  :UITextView!
+    @IBOutlet private weak var forecastImageView    :UIImageView!
     
     
     
  
     
     //MARK: - Data View Methods
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     func newDataRecv() {
-        print("DM Temp: \(dataManager.currentWeather.weatherTemp)")
-    
+        print("reloading data")
+        fillEverythingOut()
     }
     
     
+//    func newDataRecv() {
+//        print("DM Temp: \(dataManager.currentWeather.weatherTemp)")
+//    
+//    }
+//    
     
+    func fillEverythingOut() {
+        if let currentTemp = dataManager.currentWeather.weatherTemp{
+            forecastTempLabel.text = String(currentTemp)
+        }
+        if let tempDate = dataManager.currentWeather.weatherDate {
+            forecastDateLabel.text = String(tempDate)
+        }
+        if let tempCity = dataManager.currentWeather.weatherCity {
+            forecastCityLabel.text = String(tempCity)
+        }
+        forecastImageView.image = UIImage (named: dataManager.currentWeather.weatherImage)
+        if let currentSummary = dataManager.currentWeather.weatherDescript {
+            forecastSumTextView.text = "Current Weather Summary: " + currentSummary
+        }
+    }
     
+
+
     @IBAction private func getButtonPressed(sender: UIBarButtonItem) {
         if networkManager.serverAvailable {
             if let address = forecastSearchBar.text {
