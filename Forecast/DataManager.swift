@@ -39,6 +39,7 @@ class DataManager: NSObject {
             }
         }
     }
+
     
     
     func getDataFromServer(coords: String) {
@@ -64,13 +65,14 @@ class DataManager: NSObject {
                 self.currentWeather.weatherTemp = tempWeatherDict.objectForKey("temperature") as! Double
                 self.currentWeather.weatherImage = tempWeatherDict.objectForKey("icon") as! String
                 self.currentWeather.weatherDescript = tempWeatherDict.objectForKey("summary") as! String
-//                    currWeather.weatherLat = weatherDict.objectForKey("latitude") as! String
-//                    currWeather.weatherLon = weatherDict.objectForKey("longitutde") as! String
-////                    print("imagename: \(currWeather.weatherImageFilename)")
-//                    currWeather.weatherCity = weatherDict.objectForKey("city") as! String
-//                    let formatter = NSDateFormatter()
-//                    formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-//            currWeather.weatherDate = formatter.dateFromString(weatherDict.objectForKey("time") as! String)
+                self.currentWeather.weatherLat = tempWeatherDict.objectForKey("latitude") as! String
+                self.currentWeather.weatherLon = tempWeatherDict.objectForKey("longitutde") as! String
+                self.currentWeather.weatherCity = tempWeatherDict.objectForKey("city") as! String
+                    print("imagename: \(self.currentWeather.weatherImage)")
+                
+                let formatter = NSDateFormatter()
+                    formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                self.currentWeather.weatherDate = formatter.dateFromString(tempWeatherDict.objectForKey("time") as! String)
                 dispatch_async(dispatch_get_main_queue(), {
                     NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "recvNewDataFromServer", object: nil))
                 })
@@ -109,4 +111,3 @@ class DataManager: NSObject {
 
 
 
-//}

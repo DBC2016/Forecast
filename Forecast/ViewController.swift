@@ -23,9 +23,20 @@ class ViewController: UIViewController {
     
     //MARK: - Data View Methods
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     func newDataRecv() {
         print("DM Temp: \(dataManager.currentWeather.weatherTemp)")
-    
     
     }
     
@@ -43,6 +54,8 @@ class ViewController: UIViewController {
             
         }
     }
+    
+
     
     
     
