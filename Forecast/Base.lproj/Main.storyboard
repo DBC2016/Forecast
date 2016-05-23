@@ -49,8 +49,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon" translatesAutoresizingMaskIntoConstraints="NO" id="UkU-08-kwN">
-                                <rect key="frame" x="262" y="149" width="171" height="128"/>
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UkU-08-kwN">
+                                <rect key="frame" x="262" y="149" width="125" height="125"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sfb-xq-Vl4">
@@ -93,7 +93,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="forecastCityLabel" destination="2iP-yx-JTu" id="4xi-sn-d3h"/>
-                        <outlet property="forecastDate" destination="D3P-ob-PKU" id="wiD-Tx-lqa"/>
                         <outlet property="forecastImageView" destination="UkU-08-kwN" id="stW-Vl-T8e"/>
                         <outlet property="forecastSearchBar" destination="tzG-S9-dH9" id="iHt-Bd-ry4"/>
                         <outlet property="forecastSumTextView" destination="qwE-pN-sDK" id="PnL-xa-4A1"/>
@@ -123,7 +122,4 @@
             <point key="canvasLocation" x="38" y="-378"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="icon" width="125" height="25"/>
-    </resources>
 </document>

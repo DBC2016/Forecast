@@ -65,14 +65,18 @@ class DataManager: NSObject {
                 self.currentWeather.weatherTemp = tempWeatherDict.objectForKey("temperature") as! Double
                 self.currentWeather.weatherImage = tempWeatherDict.objectForKey("icon") as! String
                 self.currentWeather.weatherDescript = tempWeatherDict.objectForKey("summary") as! String
-                self.currentWeather.weatherLat = tempWeatherDict.objectForKey("latitude") as! String
-                self.currentWeather.weatherLon = tempWeatherDict.objectForKey("longitutde") as! String
-                self.currentWeather.weatherCity = tempWeatherDict.objectForKey("city") as! String
-                    print("imagename: \(self.currentWeather.weatherImage)")
+                let unixTime = Double(tempWeatherDict.objectForKey("time") as! Int)
+                let forecastDate = NSDate(timeIntervalSince1970: unixTime)
+                self.currentWeather.weatherDate = forecastDate
+                print("Date:\(forecastDate)")
+//                self.currentWeather.weatherLat = tempWeatherDict.objectForKey("latitude") as! String
+//                self.currentWeather.weatherLon = tempWeatherDict.objectForKey("longitutde") as! String
+//                self.currentWeather.weatherCity = tempWeatherDict.objectForKey("city") as! String
+                print("imagename: \(self.currentWeather.weatherImage)")
                 
-                let formatter = NSDateFormatter()
-                    formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-                self.currentWeather.weatherDate = formatter.dateFromString(tempWeatherDict.objectForKey("time") as! String)
+//                let formatter = NSDateFormatter()
+//                    formatter.dateFormat = "YYYY-MM-DD HH:MM:SS"
+//                self.currentWeather.weatherDate = formatter.dateFromString(tempWeatherDict.objectForKey("time") as! String)
                 dispatch_async(dispatch_get_main_queue(), {
                     NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "recvNewDataFromServer", object: nil))
                 })
@@ -86,6 +90,8 @@ class DataManager: NSObject {
         task.resume()
     }
     
+    
+    //DON'T NEED
     func fileIsInDocuments(filename: String) -> Bool {
         let fileManager = NSFileManager.defaultManager()
         return fileManager.fileExistsAtPath(getDocumentPathForFile(filename))
@@ -107,7 +113,7 @@ class DataManager: NSObject {
         
     }
     
+
+
 }
-
-
 
